@@ -1,0 +1,40 @@
+{
+    "name": "dakalab/card-parser",
+    "description": "Card parser for ID number and Bank account of China",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hyper Jiang",
+            "email": "hyper@dakalab.com",
+            "homepage": "http://dakalab.com"
+        }
+    ],
+    "require": {
+        "php": ">=7",
+        "dakalab/division-code": "^1.0",
+        "dakalab/birthday": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7",
+        "friendsofphp/php-cs-fixer": "^2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dakalab\\CardParser\\": "src/CardParser/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dakalab\\CardParser\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": [
+            "@phpunit",
+            "@phpcs"
+        ],
+        "phpunit": "phpunit --color=always --verbose",
+        "phpcs": "php-cs-fixer fix --diff"
+    }
+}

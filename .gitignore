@@ -1,0 +1,6 @@
+.DS_Store
+.php_cs.cache
+build
+vendor
+composer.lock
+clover.xml
