@@ -98,12 +98,23 @@ class IDNumber
      */
     protected function validateLastChar(): bool
     {
+        return self::generateLastChar($this->number) == $this->number[17];
+    }
+
+    /**
+     * Generate the last character
+     *
+     * @param  string   $str
+     * @return string
+     */
+    protected static function generateLastChar($str): string
+    {
         $sum = 0;
         for ($i = 0; $i < 17; $i++) {
-            $sum += $this->number[$i] * self::MODULUS[$i];
+            $sum += $str[$i] * self::MODULUS[$i];
         }
 
-        return self::MAPPING[$sum % 11] == $this->number[17];
+        return self::MAPPING[$sum % 11];
     }
 
     /**
@@ -134,5 +145,33 @@ class IDNumber
         }
 
         return isset($this->info[$method]) ? $this->info[$method] : null;
+    }
+
+    /**
+     * Generate a random valid ID number
+     *
+     * @return string
+     */
+    public static function generate(): string
+    {
+        $divisionCode = new DivisionCode;
+        $count = count($divisionCode->codes);
+        $code = array_rand($divisionCode->codes);
+
+        $year = mt_rand(date('Y') - 100, date('Y'));
+        $month = mt_rand(1, 12);
+        if ($month == 2) {
+            $day = mt_rand(1, 28);
+        } elseif (in_array($month, [4, 6, 9, 11])) {
+            $day = mt_rand(1, 30);
+        } else {
+            $day = mt_rand(1, 31);
+        }
+
+        $seq = sprintf('%03d', mt_rand(0, 999));
+
+        $str = $code . $year . sprintf('%02d%02d', $month, $day) . $seq;
+
+        return $str . self::generateLastChar($str);
     }
 }

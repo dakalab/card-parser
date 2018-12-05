@@ -79,4 +79,11 @@ class IDNumberTest extends TestCase
             ],
         ];
     }
+
+    public function testGenerate(): void
+    {
+        $number = IDNumber::generate();
+        $idNumber = new IDNumber($number);
+        $this->assertTrue($idNumber->valid);
+    }
 }
