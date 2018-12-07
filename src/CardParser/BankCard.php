@@ -39,7 +39,7 @@ class BankCard extends Card
         if (!in_array($lang, self::SUPPORTED_LANGS)) {
             $lang = 'zh';
         }
-        $dir = __DIR__ . DIRECTORY_SEPARATOR . 'BankAccount' . DIRECTORY_SEPARATOR . $lang;
+        $dir = __DIR__ . DIRECTORY_SEPARATOR . 'BankCard' . DIRECTORY_SEPARATOR . $lang;
         $banks = file_get_contents($dir . DIRECTORY_SEPARATOR . 'banks.json');
         $this->banks = json_decode($banks, true);
         $types = file_get_contents($dir . DIRECTORY_SEPARATOR . 'types.json');
