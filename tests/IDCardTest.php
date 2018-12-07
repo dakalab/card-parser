@@ -2,30 +2,30 @@
 
 namespace Dakalab\CardParser\Tests;
 
-use Dakalab\CardParser\IDNumber;
+use Dakalab\CardParser\IDCard;
 
 /**
- * Test class for Dakalab\CardParser\IDNumber
+ * Test class for Dakalab\CardParser\IDCard
  *
- * @coversDefaultClass \Dakalab\CardParser\IDNumber
+ * @coversDefaultClass \Dakalab\CardParser\IDCard
  * @runTestsInSeparateProcesses
  */
-class IDNumberTest extends TestCase
+class IDCardTest extends TestCase
 {
     /**
-     * @dataProvider idNumberProvider
+     * @dataProvider idCardProvider
      */
-    public function testIDNumber($input, $expected): void
+    public function testIDCard($input, $expected): void
     {
-        $idNumber = new IDNumber($input);
-        $this->assertEquals($idNumber->info, $idNumber->info());
+        $idCard = new IDCard($input);
+        $this->assertEquals($idCard->info, $idCard->info());
         foreach ($expected as $k => $v) {
-            $this->assertEquals($v, $idNumber->$k);
-            $this->assertEquals($v, $idNumber->$k());
+            $this->assertEquals($v, $idCard->$k);
+            $this->assertEquals($v, $idCard->$k());
         }
     }
 
-    public function idNumberProvider(): array
+    public function idCardProvider(): array
     {
         return [
             [
@@ -82,8 +82,8 @@ class IDNumberTest extends TestCase
 
     public function testGenerate(): void
     {
-        $number = IDNumber::generate();
-        $idNumber = new IDNumber($number);
-        $this->assertTrue($idNumber->valid);
+        $number = IDCard::generate();
+        $idCard = new IDCard($number);
+        $this->assertTrue($idCard->valid);
     }
 }

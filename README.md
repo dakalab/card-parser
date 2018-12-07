@@ -15,19 +15,20 @@ composer require dakalab/card-parser
 
 *require php >= 7*
 
-## ID Number
+## ID Card
 
 ### Usage
 
 ```
-use Dakalab\CardParser\IDNumber;
+use Dakalab\CardParser\IDCard;
 
 $no = 'the-id-number';
+$lang = 'zh'; // optional, default is zh
 
-$idNumber = new IDNumber($no);
-$info = $idNumber->info; // equal to `$info = $idNumber->info();`
+$idCard = new IDCard($no);
+$info = $idCard->info; // equal to `$info = $idCard->info();`
 print_r($info);
-$age = $idNumber->age; // equal to `$age = $idNumber->age();`
+$age = $idCard->age; // equal to `$age = $idCard->age();`
 echo $age . PHP_EOL;
 ```
 
@@ -60,5 +61,52 @@ Array
 (
     [valid] => false
     [error] => "error message"
+)
+```
+
+### Generate random ID number
+
+```
+echo IDCard::generate();
+```
+
+## Bank Card
+
+### Usage
+
+```
+use Dakalab\CardParser\BankCard;
+
+$no = 'the-bank-account';
+$lang = 'zh'; // optional, default is zh
+
+$bankCard = new BankCard($no, $lang);
+print_r($bankCard->info);
+```
+
+### Result
+
+The result info will be in below formats:
+
+1) for valid bank account:
+
+```
+Array
+(
+    [valid] => true
+    [bankCode] => string
+    [bankName] => string
+    [cardType] => string
+    [cardTypeName] => string
+    [icon] => string
+)
+```
+
+2) for invalid bank account:
+
+```
+Array
+(
+    [valid] => false
 )
 ```

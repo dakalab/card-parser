@@ -13,7 +13,7 @@
     "require": {
         "php": ">=7",
         "dakalab/division-code": "^1.0",
-        "dakalab/birthday": "dev-master"
+        "dakalab/birthday": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^7",

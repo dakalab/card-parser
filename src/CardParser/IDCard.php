@@ -5,33 +5,14 @@ namespace Dakalab\CardParser;
 use Dakalab\Birthday\Birthday;
 use Dakalab\DivisionCode\DivisionCode;
 
-class IDNumber
+class IDCard extends Card
 {
-    public $number = ''; // ID number
-
-    public $info = ['valid' => false]; // the parsed result
-
     const MODULUS = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
 
     const MAPPING = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
 
     /**
-     * Constructor
-     *
-     * @param string $number ID number
-     */
-    public function __construct($number)
-    {
-        $this->number = strtoupper($number);
-        try {
-            $this->parse();
-        } catch (\Exception $e) {
-            $this->info['error'] = $e->getMessage();
-        }
-    }
-
-    /**
-     * Parse the id number
+     * Parse the id card
      */
     protected function parse(): void
     {
@@ -56,7 +37,7 @@ class IDNumber
             $date = substr($this->number, 6, 8);
             $gender = $this->number[16] % 2 ? 'M' : 'F';
         }
-        $birthday = new Birthday($date, 'zh');
+        $birthday = new Birthday($date, $this->lang);
 
         $code = substr($this->number, 0, 6);
         $divisionCode = new DivisionCode;
@@ -76,7 +57,7 @@ class IDNumber
     }
 
     /**
-     * Parse the version of ID number, return 0 if it's invalid
+     * Parse the version of ID card, return 0 if it's invalid
      *
      * @return int
      */
@@ -115,36 +96,6 @@ class IDNumber
         }
 
         return self::MAPPING[$sum % 11];
-    }
-
-    /**
-     * Magic method to get specified field content
-     * e.g. $idNumber->age
-     * http://php.net/manual/en/language.oop5.overloading.php#object.get
-     *
-     * @param  string  $key
-     * @return mixed
-     */
-    public function __get($key)
-    {
-        return isset($this->info[$key]) ? $this->info[$key] : null;
-    }
-
-    /**
-     * Magic method to get specified field content
-     * e.g. $idNumber->age()
-     * http://php.net/manual/en/language.oop5.overloading.php#object.call
-     *
-     * @param  string  $key
-     * @return mixed
-     */
-    public function __call($method, $args)
-    {
-        if ($method == 'info') {
-            return $this->info;
-        }
-
-        return isset($this->info[$method]) ? $this->info[$method] : null;
     }
 
     /**
