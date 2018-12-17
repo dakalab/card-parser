@@ -4,7 +4,9 @@ Card parser for ID number and Bank account of China
 
 [![Build Status](https://travis-ci.org/dakalab/card-parser.svg?branch=master)](https://travis-ci.org/dakalab/card-parser)
 [![codecov](https://codecov.io/gh/dakalab/card-parser/branch/master/graph/badge.svg)](https://codecov.io/gh/dakalab/card-parser)
+[![Latest Stable Version](https://poser.pugx.org/dakalab/card-parser/v/stable)](https://packagist.org/packages/dakalab/card-parser)
 [![Total Downloads](https://poser.pugx.org/dakalab/card-parser/downloads)](https://packagist.org/packages/dakalab/card-parser)
+[![PHP Version](https://img.shields.io/php-eye/dakalab/card-parser.svg)](https://packagist.org/packages/dakalab/card-parser)
 [![License](https://poser.pugx.org/dakalab/card-parser/license.svg)](https://packagist.org/packages/dakalab/card-parser)
 
 ## Install
