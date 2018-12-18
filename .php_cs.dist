@@ -54,8 +54,7 @@ $rules = array(
 $finder = PhpCsFixer\Finder::create()
     ->name('*.php')
     ->in(__DIR__ . '/src')
-    ->in(__DIR__ . '/tests')
-    ->exclude('codes.php');
+    ->in(__DIR__ . '/tests');
 
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
