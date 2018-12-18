@@ -82,8 +82,11 @@ class IDCardTest extends TestCase
 
     public function testGenerate(): void
     {
-        $number = IDCard::generate();
-        $idCard = new IDCard($number);
-        $this->assertTrue($idCard->valid);
+        // loop 100 times in order to raise code coverage
+        for ($i = 0; $i < 100; $i++) {
+            $number = IDCard::generate();
+            $idCard = new IDCard($number);
+            $this->assertTrue($idCard->valid);
+        }
     }
 }
