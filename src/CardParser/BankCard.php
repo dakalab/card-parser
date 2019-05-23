@@ -84,7 +84,7 @@ class BankCard extends Card
      */
     protected function callAlipayAPI(): void
     {
-        $api = 'https://ccdcapi.alipay.com/validateAndCacheCardInfo.json?_input_charset=utf-8&cardNo=%d&cardBinCheck=true';
+        $api = 'https://ccdcapi.alipay.com/validateAndCacheCardInfo.json?_input_charset=utf-8&cardNo=%s&cardBinCheck=true';
 
         $json = file_get_contents(sprintf($api, $this->number));
         $result = json_decode($json);
