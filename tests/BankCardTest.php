@@ -46,7 +46,7 @@ class BankCardTest extends TestCase
                 [
                     'valid'        => true,
                     'bankCode'     => 'SPABANK',
-                    'bankName'     => 'Shenfa / Ping An Bank',
+                    'bankName'     => 'Ping An Bank',
                     'cardType'     => 'DC',
                     'cardTypeName' => 'Debit Card',
                     'icon'         => 'https://apimg.alipay.com/combo.png?d=cashier&t=SPABANK',
