@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": ">=7",
-        "dakalab/division-code": "^2",
+        "dakalab/division-code": "^2.1",
         "dakalab/birthday": "^1.3"
     },
     "require-dev": {

@@ -106,8 +106,9 @@ class IDCard extends Card
     public static function generate(): string
     {
         $divisionCode = new DivisionCode;
-        $count = count($divisionCode->getCodes());
-        $code = array_rand($divisionCode->getCodes());
+        $count = $divisionCode->count();
+        $offset = mt_rand(0, $count - 1);
+        $code = key($divisionCode->getSlice($offset, 1));
 
         $year = mt_rand(date('Y') - 100, date('Y'));
         $month = mt_rand(1, 12);
